@@ -1,0 +1,81 @@
+﻿@model EmpresaDeViajes.Models.Destino
+
+@{
+    ViewBag.Title = "Detalles de un destino";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Destino</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tierra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tierra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aire)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo }) |
+    @Html.ActionLink("Indice", "Index")
+</p>

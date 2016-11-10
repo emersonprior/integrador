@@ -1,0 +1,124 @@
+﻿@model EmpresaDeViajes.Models.Compra
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Compra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.NombreApellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.NombreApellido)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+    </dl>
+</div>
+<h4>Detalles de las excursiones compradas</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Costo
+        <th>
+            Nombre
+        </th>
+        <th>
+           Descripcion
+        </th>
+        <th>
+            Duración
+        </th>
+    </tr>
+
+    @foreach (var item in Model.CompraExcursion)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Costo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duración)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h4>Detalles de los Transportes comprados</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Costo
+        <th>
+            Ciudad Origen
+        </th>
+        <th>
+            Ciudad Destino
+        </th>
+        <th>
+            Tipo
+        </th>
+    </tr>
+
+    @foreach (var item in Model.CompraTransporte)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Costo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadOrigen.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadDestino.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Indice", "Index")
+</p>

@@ -1,0 +1,86 @@
+﻿@model EmpresaDeViajes.Models.Destino
+
+@{
+    ViewBag.Title = "Borrar Destino";
+}
+
+<h2>Borrar</h2>
+
+<h3>ESTAS SEGURO?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tierra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tierra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aire)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirmar" class="btn btn-default" /> |
+            @Html.ActionLink("Indice", "Index")
+        </div>
+    }
+</div>

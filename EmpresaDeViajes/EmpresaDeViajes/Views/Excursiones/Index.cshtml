@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EmpresaDeViajes.Models.Excursion>
+
+@{
+    ViewBag.Title = "Indice de Excursiones";
+}
+
+<h2>Indice de Excursiones </h2>
+
+<p>
+        @Html.ActionLink("Crear Nueva Excursion", "Create")
+        @Html.ActionLink("BuscarClienteExcursion", "BuscarClienteExcursion")
+</p>
+<h4>Listado de Excursion Pre-Armadas(hechas por un administrador)</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duración)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Costo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duración)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Costo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<input type="button" value="Imprimir" onclick="window.print()" />

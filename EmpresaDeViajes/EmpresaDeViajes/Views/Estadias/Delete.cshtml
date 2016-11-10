@@ -1,0 +1,37 @@
+﻿@model EmpresaDeViajes.Models.Estadia
+
+@{
+    ViewBag.Title = "Borrar Estadia";
+}
+
+<h2>Borrar</h2>
+
+<h3>ESTAS SEGURO?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dias)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Destino.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destino.Nombre)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirmar" class="btn btn-default" /> |
+            @Html.ActionLink("Indice", "Index")
+        </div>
+    }
+</div>

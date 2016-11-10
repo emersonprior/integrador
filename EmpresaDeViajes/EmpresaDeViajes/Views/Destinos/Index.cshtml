@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EmpresaDeViajes.Models.Destino>
+
+@{
+    ViewBag.Title = "Indice de  Destino";
+}
+
+<h2>Indice de Destino</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Destino", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Costo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Costa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tierra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aire)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Costa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tierra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aire)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Codigo }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Codigo })
+        </td>
+    </tr>
+}
+
+</table>
+
+<input type="button" value="Imprimir" onclick="window.print()" />

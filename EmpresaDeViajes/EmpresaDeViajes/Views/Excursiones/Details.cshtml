@@ -1,0 +1,118 @@
+﻿@model EmpresaDeViajes.Models.Excursion
+
+@{
+    ViewBag.Title = "Detalles de una Excursion";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Excursion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duración)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duración)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+        
+    </dl>
+</div>
+<h3>Estadias</h3>
+<table class="table">
+    <tr> <th>
+            <p>Estado Activo?</p>
+        </th>
+        <th>
+            <p>Lugar</p>
+        </th>
+        <th>
+            <p>Dias</p>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.ExcursionEstadias)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destino.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dias)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+<h3>Transportes</h3>
+<table class="table">
+    <tr>
+        <th>
+            <p>Estado Activo?</p>
+        </th>
+        <th>
+            <p>Ciudad Origen</p>
+        </th>
+        <th>
+            <p>Ciudad Destino</p>
+        </th>
+        <th>
+            <p>Costo</p>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.ExcursionesTransportes)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadOrigen.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadDestino.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Costo)
+            </td>
+
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Indice", "Index")
+</p>

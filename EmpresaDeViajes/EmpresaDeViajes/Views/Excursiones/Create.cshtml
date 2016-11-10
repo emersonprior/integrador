@@ -1,0 +1,193 @@
+﻿@model EmpresaDeViajes.ViewModels.ViewModelExcursion
+
+@{
+    ViewBag.Title = "Crear Excursion";
+}
+
+<h2>Excursion</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>NuevaExcursion</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Clientes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Excursion.Cliente.Id, Model.Clientes, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <h3>EstadiasDisponibles</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    <p>Lugar</p>
+                </th>
+                <th>
+                    <p>Dias</p>
+                </th>
+                <th></th>
+
+            </tr>
+
+            @foreach (var item in Model.Estadias)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destino.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dias)
+                    </td>
+                    <td>
+                        @Html.ActionLink("TomarEstadia", "TomarEstadia", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <h3>EstadiasSeleccionadas</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    <p>Lugar</p>
+                </th>
+                <th>
+                    <p>Dias</p>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Excursion.ExcursionEstadias)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destino.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dias)
+                    </td>
+                    <td>
+                        @Html.ActionLink("QuitarEstadia", "QuitarEstadia", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <h3>TransportesDisponibles</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    <p>Costo</p>
+                </th>
+                <th>
+                    <p>Tipo</p>
+                </th>
+
+                <th>
+                    <p>CiudadOrigen</p>
+                </th>
+
+                <th>
+                    <p>CiudadDestino</p>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Transportes)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Costo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CiudadOrigen.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CiudadDestino.Nombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("TomarTransporte", "TomarTransporte", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <h3>TransportesSeleccionados</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    <p>Costo</p>
+                </th>
+                <th>
+                    <p>Tipo</p>
+                </th>
+                <th>
+                    <p>CiudadOrigen</p>
+                </th>
+                <th>
+                    <p>CiduadDestino</p>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Excursion.ExcursionesTransportes)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Costo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CiudadOrigen.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CiudadDestino.Nombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("QuitarTransporte", "QuitarTransporte", new { id = item.Id })
+                    </td>
+                    
+                </tr>
+            }
+
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Indice", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

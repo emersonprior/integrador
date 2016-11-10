@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EmpresaDeViajes.Models.Transporte>
+
+@{
+    ViewBag.Title = "Indice de Transportes";
+}
+
+<h2>Indice de Transportes</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Transporte", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Costo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CiudadOrigen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CiudadDestino)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CiudadOrigen.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CiudadDestino.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<input type="button" value="Imprimir" onclick="window.print()" />
